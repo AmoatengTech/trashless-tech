@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trashless Tech - E-Waste Collection Request</title>
+    <meta name="description" content="Request e-waste collection for PC system units and electronics recycling by Trashless Tech.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="form-wrapper">
+        <div class="form-card" id="mainCard">
+            <!-- Header -->
+            <div class="form-header">
+                <h1 style="color: #18632B;">Trashless Tech</h1>
+                <p>E-Waste Recycling & System Unit Collection</p>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">A Business of <strong>Amoateng Technologies Limited</strong></p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar" id="progressBar">
+                <div class="step-dot active" onclick="goTo(1)"><div class="dot">1</div><span>Donor Info</span></div>
+                <div class="step-dot" onclick="goTo(2)"><div class="dot">2</div><span>Inventory</span></div>
+                <div class="step-dot" onclick="goTo(3)"><div class="dot">3</div><span>Hardware Specs</span></div>
+                <div class="step-dot" onclick="goTo(4)"><div class="dot">4</div><span>Logistics</span></div>
+                <div class="step-dot" onclick="goTo(5)"><div class="dot">5</div><span>Confirmation</span></div>
+            </div>
+
+            <!-- FORM START -->
+            <form id="collectionForm">
+                <div id="stepsContainer">
+                    <!-- Step 1: Donor Info -->
+                    <div class="form-step active" id="step1">
+                        <h2>Donor Information</h2>
+                        <p>Help us understand who you are and what you're contributing.</p>
+                        <div class="row cols-2">
+                            <div class="field">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                            </div>
+                            <div class="field">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="row cols-2">
+                            <div class="field">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                            </div>
+                            <div class="field">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+                            </div>
+                        </div>
+                        <div class="row cols-2">
+                            <div class="field">
+                                <label for="organization">Organization/Company</label>
+                                <input type="text" id="organization" name="organization" placeholder="Tech Corp Inc.">
+                            </div>
+                            <div class="field">
+                                <label for="location">City/Region *</label>
+                                <input type="text" id="location" name="location" placeholder="New York, NY" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="unitsCount">Estimated Total Units to Donate *</label>
+                            <input type="number" id="unitsCount" name="unitsCount" min="1" placeholder="e.g., 25" required>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-accent" onclick="goTo(2)">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Inventory -->
+                    <div class="form-step" id="step2">
+                        <h2>Hardware Inventory</h2>
+                        <p>Select the types of equipment you're donating and quantities.</p>
+                        <div class="inventory-grid">
+                            <div class="inventory-item">
+                                <label for="qty-desktops">
+                                    <input type="checkbox" id="qty-desktops" class="hardware-checkbox" value="desktop">
+                                    <span class="hardware-name">💻 Desktop System Units</span>
+                                </label>
+                                <input type="number" id="qty-desktops-input" name="qty_desktops" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                            <div class="inventory-item">
+                                <label for="qty-laptops">
+                                    <input type="checkbox" id="qty-laptops" class="hardware-checkbox" value="laptop">
+                                    <span class="hardware-name">🖥️ Laptops</span>
+                                </label>
+                                <input type="number" id="qty-laptops-input" name="qty_laptops" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                            <div class="inventory-item">
+                                <label for="qty-servers">
+                                    <input type="checkbox" id="qty-servers" class="hardware-checkbox" value="server">
+                                    <span class="hardware-name">🖲️ Servers</span>
+                                </label>
+                                <input type="number" id="qty-servers-input" name="qty_servers" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                            <div class="inventory-item">
+                                <label for="qty-monitors">
+                                    <input type="checkbox" id="qty-monitors" class="hardware-checkbox" value="monitor">
+                                    <span class="hardware-name">🖼️ Monitors</span>
+                                </label>
+                                <input type="number" id="qty-monitors-input" name="qty_monitors" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                            <div class="inventory-item">
+                                <label for="qty-peripherals">
+                                    <input type="checkbox" id="qty-peripherals" class="hardware-checkbox" value="peripheral">
+                                    <span class="hardware-name">⌨️ Keyboards, Mice, Cables</span>
+                                </label>
+                                <input type="number" id="qty-peripherals-input" name="qty_peripherals" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                            <div class="inventory-item">
+                                <label for="qty-other">
+                                    <input type="checkbox" id="qty-other" class="hardware-checkbox" value="other">
+                                    <span class="hardware-name">📦 Other E-Waste</span>
+                                </label>
+                                <input type="number" id="qty-other-input" name="qty_other" class="qty-input" min="1" placeholder="Qty" disabled>
+                            </div>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-ghost" onclick="goTo(1)">← Back</button>
+                            <button type="button" class="btn btn-accent" onclick="goTo(3)">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Hardware Specs & Data Security -->
+                    <div class="form-step" id="step3">
+                        <h2>Hardware Specifications & Data Security</h2>
+                        <p>Provide details about your hardware and data destruction preferences.</p>
+                        <div class="field">
+                            <label for="cpuGeneration">Typical CPU Generation/Model</label>
+                            <input type="text" id="cpuGeneration" name="cpuGeneration" placeholder="e.g., Intel Core i7 11th Gen">
+                        </div>
+                        <div class="field">
+                            <label for="ramTotal">Typical RAM Amount</label>
+                            <input type="text" id="ramTotal" name="ramTotal" placeholder="e.g., 16GB, 32GB">
+                        </div>
+                        <div class="field">
+                            <label for="storageInfo">Storage Types Present</label>
+                            <input type="text" id="storageInfo" name="storageInfo" placeholder="e.g., SSD 512GB, HDD 1TB">
+                        </div>
+                        <div class="field">
+                            <label>Data Security & Destruction Preference *</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="dataDestruction" value="secure-wipe" required>
+                                    <span>🔒 Secure Data Wiping (NIST-certified)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="dataDestruction" value="physical-destruction" required>
+                                    <span>⚒️ Physical Destruction (Hard drive shredding)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="dataDestruction" value="onsite-certification" required>
+                                    <span>📋 On-Site Destruction w/ Certificate</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="dataDestruction" value="no-preference" required>
+                                    <span>❓ No Preference</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="additionalNotes">Additional Hardware Notes</label>
+                            <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="e.g., All units are in working condition..."></textarea>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-ghost" onclick="goTo(2)">← Back</button>
+                            <button type="button" class="btn btn-accent" onclick="goTo(4)">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Logistics & Scheduling -->
+                    <div class="form-step" id="step4">
+                        <h2>Pickup Logistics</h2>
+                        <p>Tell us where and when we should collect your e-waste.</p>
+                        <div class="field">
+                            <label for="pickupAddress">Full Pickup Address *</label>
+                            <input type="text" id="pickupAddress" name="pickupAddress" placeholder="Street address, building, suite" required>
+                        </div>
+                        <div class="row cols-2">
+                            <div class="field">
+                                <label for="pickupCity">City *</label>
+                                <input type="text" id="pickupCity" name="pickupCity" required>
+                            </div>
+                            <div class="field">
+                                <label for="pickupState">State/Province *</label>
+                                <input type="text" id="pickupState" name="pickupState" required>
+                            </div>
+                        </div>
+                        <div class="row cols-2">
+                            <div class="field">
+                                <label for="pickupZip">ZIP/Postal Code *</label>
+                                <input type="text" id="pickupZip" name="pickupZip" required>
+                            </div>
+                            <div class="field">
+                                <label for="facilityAccess">Building Access Notes</label>
+                                <input type="text" id="facilityAccess" name="facilityAccess" placeholder="e.g., Main loading dock">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="preferredDate">Preferred Pickup Date *</label>
+                            <input type="date" id="preferredDate" name="preferredDate" required>
+                        </div>
+                        <div class="field">
+                            <label>Preferred Time Window *</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="timeWindow" value="morning" required>
+                                    <span>🌅 Morning (8 AM - 12 PM)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="timeWindow" value="afternoon" required>
+                                    <span>☀️ Afternoon (12 PM - 5 PM)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="timeWindow" value="flexible" required>
+                                    <span>🤝 Flexible (Anytime)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="contactPerson">Contact Person at Pickup Location</label>
+                            <input type="text" id="contactPerson" name="contactPerson" placeholder="Name of person to meet with">
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-ghost" onclick="goTo(3)">← Back</button>
+                            <button type="button" class="btn btn-accent" onclick="goTo(5)">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Confirmation -->
+                    <div class="form-step" id="step5">
+                        <h2>Submission & Confirmation</h2>
+                        <div class="field">
+                            <label>
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <span>I authorize Trashless Tech to collect and recycle these units according to data security preferences selected above *</span>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>
+                                <input type="checkbox" id="caseStudy" name="caseStudy">
+                                <span>I agree that Trashless Tech may feature this donation in a case study (optional)</span>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label for="submitterName">Full Name (printed) *</label>
+                            <input type="text" id="submitterName" name="submitterName" placeholder="Your full name" required>
+                        </div>
+                        <div class="field">
+                            <label for="submitterTitle">Title/Role</label>
+                            <input type="text" id="submitterTitle" name="submitterTitle" placeholder="e.g., IT Manager">
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-ghost" onclick="goTo(4)">← Back</button>
+                            <button type="submit" class="btn btn-accent" id="submitBtn">Submit Collection Request ✓</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Screen -->
+            <div id="successScreen" class="hidden success-container">
+                <div class="success-header" style="background-color: #18632B;">
+                    <div class="success-icon">✓</div>
+                    <h2>Collection Request Submitted!</h2>
+                </div>
+                <div class="success-content">
+                    <p><strong>Thank you for choosing Trashless Tech!</strong></p>
+                    <p>Your e-waste collection request has been received. Our team will review your submission and contact you within 2-3 business days.</p>
+                    <div class="next-steps">
+                        <h3>What Happens Next:</h3>
+                        <ul>
+                            <li>We will confirm the pickup date and time</li>
+                            <li>Send you impact report (units recycled and materials recovered)</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-accent" style="background-color: #18632B; margin-top: 20px;" onclick="location.reload()">Submit Another Request</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Trashless Tech. A Business of <a href="https://github.com/AmoatengTech" target="_blank">Amoateng Technologies Limited</a>.</p>
+            <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+        </footer>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
