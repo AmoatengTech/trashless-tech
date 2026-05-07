@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentStep = 1;
     const totalSteps = 5;
 
-    // ⚠️ CONFIGURATION - UPDATE THESE THREE VALUES
-    const OPNFORM_TOKEN = "609|jBLh8VYjNNO84X8fQ8aPUVgvHX9lfbqiez9s2zm4031c6b0a";           // Your Bearer Token
-    const OPNFORM_FORM_ID = "trashless-tech-hardware-donation-form-hfp1dg";           // Your Form ID from Dashboard
+    // ⚠️ CONFIGURATION - UPDATE THESE VALUES
+    const OPNFORM_TOKEN = "609|jBLh8VYjNNO84X8fQ8aPUVgvHX9lfbqiez9s2zm4031c6b0a"; // Your Bearer Token
+    const OPNFORM_FORM_ID = "trashless-tech-hardware-donation-form-hfp1dg"; // Your Form ID from Dashboard
     const OPNFORM_ENDPOINT = `https://api.opnform.com/api/forms/${OPNFORM_FORM_ID}/submissions`;
 
-    /* ─── NAVIGATION & TRANSITION ─── */
-    function goTo(step) {
-        // Validate current step before moving forward
+    // ✅ EXPOSE FUNCTIONS GLOBALLY FOR INLINE ONCLICK HANDLERS
+    window.goTo = function (step) {
+        // Validate current step before moving forward (only when moving next)
         if (step > currentStep) {
             if (!validateStep(currentStep)) {
                 alert("Please fill in all required fields marked with *");
@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    };
 
-    function updateProgressBar(step) {
+    window.updateProgressBar = function (step) {
         const dots = document.querySelectorAll('.step-dot');
         dots.forEach((dot, index) => {
             if (index + 1 <= step) {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 dot.classList.remove('active');
             }
         });
-    }
+    };
 
     /* ─── VALIDATION ─── */
     function validateStep(step) {
